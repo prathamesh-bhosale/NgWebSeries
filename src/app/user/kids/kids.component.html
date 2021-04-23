@@ -1,0 +1,116 @@
+<!-- =============== START OF PAGE HEADER =============== -->
+<section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
+  <div class="container">
+      <div class="inner">
+          <h2 class="title"> Kids</h2>
+          <ol class="breadcrumb">
+              <li><a routerLink="/user">Home</a></li>
+              <li>Movies</li>
+          </ol>
+      </div>
+  </div>
+</section>
+<!-- =============== END OF PAGE HEADER =============== -->
+
+
+
+<!-- =============== START OF MAIN =============== -->
+<main class="ptb100">
+  <div class="container" *ngIf="movieList != null && movieList.length != 0" >
+      <!-- Start of Filters -->
+      <div class="row mb50">
+          <h1>Kids Movies</h1>
+      </div>
+      <!-- End of Filters -->
+       <!-- Start of Movie List -->
+       <div class="row">
+
+        <!-- Movie List Item -->
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="movie-box-1 mb30" *ngFor="let _movie of movieList" >
+
+                <!-- Start of Poster -->
+                <div class="poster">
+                    <img src="{{getAbsolutePath(_movie.imageurl)}}" alt="">
+                </div>
+                <!-- End of Poster -->
+
+                <!-- Start of Buttons -->
+                <div class="buttons">
+                  <div class="play-btn">
+                    <a href="{{getAbsolutePath(_movie.videourl)}}" class="play-video">
+                        <i class="fa fa-play"></i>
+                    </a>
+                </div>
+                </div>
+                <!-- End of Buttons -->
+
+                <!-- Start of Movie Details -->
+                <div class="movie-details">
+                    <h4 class="movie-title">
+                        <a href="movie-detail.html">{{_movie.name}}</a>
+                    </h4>
+                    <span class="released">{{getReleaseDate(_movie.releaseddate)}}</span>
+                </div>
+                <!-- End of Movie Details -->
+
+            </div>
+        </div>
+
+    </div>
+    <!-- End of Movie List -->
+</div>
+
+<div class="container" *ngIf="seriesList != null && seriesList.length != 0">
+    <div class="row mb50">
+      <h1>Kids Series</h1>
+    </div>
+    <div class="row">
+
+       <!-- Movie List Item -->
+       <div class="col-md-12 col-sm-12" *ngFor="let _series of seriesList" >
+        <div class="movie-list-2">
+            <div class="listing-container">
+
+                <!-- Movie List Image -->
+                <div class="listing-image">
+
+                    <!-- Image -->
+                    <div class="img-wrapper">
+
+                        <!-- Play Button -->
+                        <div class="play-btn">
+                            <a href="{{getAbsolutePath(_series.videourl)}}" class="play-video">
+                                <i class="fa fa-play"></i>
+                            </a>
+                        </div>
+
+                        <img src="{{getAbsolutePath(_series.imageurl)}}" alt="">
+                    </div>
+                </div>
+
+                <!-- Movie List Content -->
+                <div class="listing-content">
+                    <div class="inner">
+                        <h2 class="title">{{_series.name}}</h2>
+
+                        <p>
+                          {{_series.story}}
+                        </p>
+
+                        <a routerLink="/user/episodeslist/{{_series.id}}" class="btn btn-main btn-effect">View Episodes</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+      </div>
+
+
+  </div>
+</main>
+<!-- =============== END OF MAIN =============== -->
+
+

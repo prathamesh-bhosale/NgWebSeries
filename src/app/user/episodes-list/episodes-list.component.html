@@ -1,0 +1,59 @@
+<!-- =============== START OF PAGE HEADER =============== -->
+<section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
+  <div class="container">
+    <div class="inner">
+      <h2 class="title">{{seriesName}} Episdes</h2>
+      <ol class="breadcrumb">
+        <li><a routerLink="/user">Home</a></li>
+        <li><a routerLink="/user/serieslist">Series</a></li>
+        <li>Episodes</li>
+      </ol>
+    </div>
+  </div>
+</section>
+<!-- =============== END OF PAGE HEADER =============== -->
+
+
+<main class="ptb100">
+  <div class="container">
+
+    <!-- Start of Movie List -->
+    <div class="row">
+
+      <!-- Movie List Item -->
+      <div class="col-md-4 col-sm-12" *ngFor="let _episode of episodeList; index as i" >
+        <div class="movie-list-1 mb30">
+          <div class="listing-container">
+            <!-- Movie List Image -->
+            <div class="listing-image">
+              <!-- Play Button -->
+              <div class="play-btn">
+                <a (click)="incrViews(_episode)" href="{{getabsolutePath(_episode.videourl)}}" class="play-video">
+                  <i class="fa fa-play"></i>
+                </a>
+              </div>
+              <div>
+                <a class="btn btn-main" style="color: aliceblue;">
+                  Episode {{ i + 1}}
+                </a>
+              </div>
+              <!-- Image -->
+              <img src="{{getabsolutePath(_episode.imageurl)}}" alt="">
+            </div>
+            <!-- Movie List Content -->
+            <div class="listing-content">
+              <div class="inner">
+                <h2 class="title">{{_episode.name}}</h2>
+                <p>{{_episode.views}} views. {{getDate(_episode.date)}}</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Movie List -->
+
+
+  </div>
+</main>
