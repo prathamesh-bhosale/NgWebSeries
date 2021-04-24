@@ -1,0 +1,62 @@
+<header class="header">
+  <div class="container-fluid">
+
+      <!-- ====== Start of Navbar ====== -->
+      <nav class="navbar navbar-expand-lg">
+
+          <a class="navbar-brand" routerLink="/user">
+              <!-- INSERT YOUR LOGO HERE -->
+              <img src="assets/images/logo.svg" alt="logo" width="150" class="logo">
+              <!-- INSERT YOUR WHITE LOGO HERE -->
+              <img src="assets/images/logo-white.svg" alt="white logo" width="150" class="logo-white">
+          </a>
+
+          <button id="mobile-nav-toggler" class="hamburger hamburger--collapse" type="button">
+             <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+             </span>
+          </button>
+
+          <!-- ====== Start of #main-nav ====== -->
+          <div class="navbar-collapse" id="main-nav">
+
+              <!-- ====== Start of Main Menu ====== -->
+              <ul class="navbar-nav mx-auto" id="main-menu">
+
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/user/movielist">Movies</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/user/serieslist">Series</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/user/kids">Kids</a>
+                </li>
+              </ul>
+              <!-- ====== End of Main Menu ====== -->
+
+
+              <!-- ====== Start of Extra Nav ====== -->
+              <ul class="navbar-nav extra-nav">
+                  <!-- Menu Item -->
+                  <li class="nav-item m-auto">
+                      <a (click)="logout()" style="color: aliceblue;"  class="btn btn-main btn-effect login-btn popup-with-zoom-anim">
+                          <i class="icon-logout" style="font-size: 12px;"></i>Logout
+                      </a>
+                  </li>
+              </ul>
+              <!-- ====== End of Extra Nav ====== -->
+
+          </div>
+          <!-- ====== End of #main-nav ====== -->
+      </nav>
+      <!-- ====== End of Navbar ====== -->
+
+  </div>
+</header>
+
+
+
+
+<router-outlet></router-outlet>

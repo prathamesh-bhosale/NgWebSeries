@@ -1,0 +1,84 @@
+<section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
+  <div class="container">
+      <div class="inner">
+          <h2 class="title">Sherlok Homes Episodes Records</h2>
+      </div>
+  </div>
+</section>
+<section >
+
+  <main class="ptb100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <form>
+
+          <div class="form-group">
+            <label for="catgory">Name:</label>
+            <input type="text" class="form-control" name="name" id="name"
+            [(ngModel)]="episode.name">
+          </div>
+
+          <div class="form-group">
+            <label for="catgory">Poster Image</label>
+            <input type="file" class="form-control" name="imageurl" id="imageurl"
+            [(ngModel)]="episode.imageurl" (change)="selectedImage($event)" accept="image/*">
+          </div>
+
+          <div class="form-group">
+            <label for="catgory">Episode Video</label>
+            <input type="file" class="form-control" name="videourl" id="videourl"
+            [(ngModel)]="episode.videourl" (change)="selectedVideo($event)" accept="video/*">
+          </div>
+
+          <button type="button" (click)="submit()" class="btn btn-main btn-effect login-btn" id="btnadd">
+            Add Episode
+          </button>
+          <h6> {{ episode | json}} </h6>
+
+          <div id="err" class="text-danger">
+            <img *ngIf="showloading"  src="assets/images/loading.gif" class="loadingimg" />
+            {{message}}
+          </div>
+        </form>
+      </div>
+
+      <div class="col-md-7 offset-1">
+        <table class="table table-bordered">
+          <thead>
+            <th>Episode</th>
+            <th>Poster</th>
+            <th>Name</th>
+            <th>Views</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr class="editicons" *ngFor="let _episode of episodeList; index as i" >
+              <td>{{i + 1}}</td>
+              <td><img style="width: 100px;" src="{{ getAbosolutePath(_episode.imageurl) }}"></td>
+              <td>{{_episode.name}}</td>
+              <td>{{_episode.views}}</td>
+              <td>
+                <a (click)="delete(_episode)" class="btn" data-toggle="tooltip" data-placement="bottom" title="Delete Movie"><i class="large material-icons">delete</i></a>
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="7"  *ngIf="episodeList == null || episodeList.length == 0" >
+                No record found
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</main>
+</section>
+
+
+
+
+
+

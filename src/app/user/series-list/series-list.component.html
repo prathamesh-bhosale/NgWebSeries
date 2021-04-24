@@ -1,0 +1,127 @@
+
+<!-- =============== START OF PAGE HEADER =============== -->
+<section class="page-header overlay-gradient" style="background: url(assets/images/posters/movie-collection.jpg);">
+  <div class="container">
+      <div class="inner">
+          <h2 class="title">Movify Series</h2>
+          <ol class="breadcrumb">
+              <li><a routerLink="/user">Home</a></li>
+              <li>Series</li>
+          </ol>
+      </div>
+  </div>
+</section>
+<!-- =============== END OF PAGE HEADER =============== -->
+
+
+
+<!-- =============== START OF MAIN =============== -->
+<main class="ptb100">
+  <div class="container">
+      <!-- Start of Filters -->
+      <div class="row mb100">
+
+          <div class="col-md-6">
+              <!-- Sort by -->
+              <div class="layout-switcher">
+                <div class="sort-by-select col-md-7">
+                    <select class="chosen-select-no-single" [(ngModel)]="gener" (change)="sort()">
+                        <option value="0">All Generes</option>
+                        <option *ngFor="let _category of categoryList"  >
+                          {{_category.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <!-- Sort by / End -->
+          </div>
+
+          <div class="col-md-6">
+
+              <!-- Sort by -->
+              <div class="sort-by">
+                  <div class="sort-by-select">
+                      <select class="chosen-select-no-single" [(ngModel)]="langauge" (change)="sort()">
+                          <option value="0">All Laguages</option>
+                          <option *ngFor="let _language of languageList" >
+                            {{_language.name}}
+                          </option>
+                      </select>
+                  </div>
+              </div>
+              <!-- Sort by / End -->
+
+          </div>
+
+      </div>
+      <!-- End of Filters -->
+
+
+                <!-- Start of Movie List -->
+                <div class="row">
+
+                  <!-- Movie List Item -->
+                  <div class="col-md-12 col-sm-12" *ngFor="let _series of seriesList" >
+                      <div class="movie-list-2">
+                          <div class="listing-container">
+
+                              <!-- Movie List Image -->
+                              <div class="listing-image">
+
+                                  <!-- Image -->
+                                  <div class="img-wrapper">
+
+                                      <!-- Play Button -->
+                                      <div class="play-btn">
+                                          <a href="{{getAbsolutePath(_series.videourl)}}" class="play-video">
+                                              <i class="fa fa-play"></i>
+                                          </a>
+                                      </div>
+
+                                      <img src="{{getAbsolutePath(_series.imageurl)}}" alt="">
+                                  </div>
+                              </div>
+
+                              <!-- Movie List Content -->
+                              <div class="listing-content">
+                                  <div class="inner">
+                                      <h2 class="title">{{_series.name}}</h2>
+
+                                      <p>
+                                        {{_series.story}}
+                                      </p>
+
+                                      <a routerLink="/user/episodeslist/{{_series.id}}" class="btn btn-main btn-effect">View Episodes</a>
+                                  </div>
+                              </div>
+
+                          </div>
+                      </div>
+                  </div>
+
+
+
+              </div>
+              <!-- End of Movie List -->
+
+
+
+              <!-- Start of Pagination -->
+              <div class="row">
+                  <div class="col-md-12 col-sm-12">
+                      <nav class="pagination">
+                          <ul>
+                              <li><a href="#" class="current-page">1</a></li>
+                              <li><a href="#">2</a></li>
+                              <li><a href="#">3</a></li>
+                              <li><a href="#"><i class="ti-angle-right"></i></a></li>
+                          </ul>
+                      </nav>
+                  </div>
+              </div>
+              <!-- End of Pagination -->
+
+  </div>
+</main>
+<!-- =============== END OF MAIN =============== -->
+
