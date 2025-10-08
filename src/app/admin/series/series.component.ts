@@ -80,7 +80,7 @@ export class SeriesComponent implements OnInit {
     _seriesFormData.append("categories", this.series.categories)
     _seriesFormData.append("language", this.series.language)
     _seriesFormData.append("story", this.series.story)
-    _seriesFormData.append("forkid", this.series.forkid ? "1" : null)
+    _seriesFormData.append("forkid", this.series.forkid ? "1" : "0")
     _seriesFormData.append("imageurl", this.imageFile, this.imageFile.name)
     _seriesFormData.append("videourl", this.videoFile, this.videoFile.name)
 
