@@ -1,0 +1,17 @@
+/* CSS for home */
+.rev-slider-hidden {
+    display: none;
+}
+.rev-layer-welcome {
+    z-index: 5;
+    color: #fff;
+    font-weight: 900;
+}
+.rev-layer-text {
+    z-index: 5;
+    color: #fff;
+    font-weight: 400;
+}
+.features-bg {
+    background: url(/assets/images/other/touchkit.jpg);
+}

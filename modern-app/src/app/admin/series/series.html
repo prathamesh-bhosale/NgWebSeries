@@ -1,0 +1,118 @@
+<section class="page-header overlay-gradient page-header-bg">
+    <div class="container">
+        <div class="inner">
+            <h2 class="title">Series Records</h2>
+        </div>
+    </div>
+</section>
+<section>
+
+    <main class="ptb100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <form>
+
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="series.name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genre">Genres:</label>
+                            <select class="form-control" name="genre" id="genre" multiple size="3"
+                                [(ngModel)]="series.categories">
+                                <option *ngFor="let _category of categoryList" [value]="_category.name">
+                                    {{_category.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Language:</label>
+                            <select class="form-control" name="language" id="language" [(ngModel)]="series.language">
+                                <option value="0"></option>
+                                <option *ngFor="let _language of languageList" [value]="_language.name">
+                                    {{_language.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imageurl">Poster Image</label>
+                            <input type="file" class="form-control" name="imageurl" id="imageurl"
+                                (change)="selectedImage($event)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videourl">Trailer Video</label>
+                            <input type="file" class="form-control" name="videourl" id="videourl"
+                                (change)="selectedVideo($event)">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="story">Story</label>
+                            <textarea rows="2" type="text" class="form-control textarea-min-height" name="story"
+                                id="story" [(ngModel)]="series.story"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox pad-bottom-10">
+                                <input id="check1" type="checkbox" name="remember" value="1"
+                                    [(ngModel)]="series.forkid">
+                                <label for="check1">For Kids</label>
+                            </div>
+                        </div>
+
+                        <button (click)="submit()" type="button" class="btn btn-main btn-effect login-btn" id="btnadd">
+                            "Add" Series
+                        </button>
+                        <h5> {{ series | json}} </h5>
+
+                        <div id="err" class="text-danger">
+                            <img *ngIf="showloading" src="assets/images/loading.gif" class="loadingimg" alt="Loading" />
+                            {{message}}
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-7 offset-1">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Poster</th>
+                            <th>Series</th>
+                            <th>Genres</th>
+                            <th>Language</th>
+                            <th>Episodes</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr class="editicons" *ngFor="let _series of seriesList">
+                                <td><img class="table-img" [src]="getAbsolutePath(_series.imageurl)" alt="Poster"></td>
+                                <td>{{_series.name}}</td>
+                                <td> {{_series.categories}} </td>
+                                <td> {{_series.language}} </td>
+                                <td>{{_series.count}} </td>
+                                <td>
+                                    <a (click)="delete(_series)" class="btn" data-toggle="tooltip"
+                                        data-placement="bottom" title="Delete Series"><i
+                                            class="large material-icons">delete</i></a>
+                                    <a href="/admin/episodes/{{_series.id}}" class="btn" data-toggle="tooltip"
+                                        data-placement="bottom" title="Upload Episodes"><i
+                                            class="large material-icons">file_upload</i></a>
+                                </td>
+                            </tr>
+
+                            <tr *ngIf="seriesList == null || seriesList.length ==0">
+                                <td colspan="6">
+                                    No record found
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</section>

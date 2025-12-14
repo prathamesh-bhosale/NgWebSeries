@@ -1,0 +1,18 @@
+/* CSS for admindashboard */
+.page-header-bg {
+    background: url(/assets/images/posters/movie-collection.jpg);
+}
+.page-title {
+    margin: 0;
+    color: aliceblue;
+}
+.main-no-top-margin {
+    margin-top: 0px !important;
+}
+.chart-container-wrapper {
+    margin-top: 0;
+}
+.chart-container {
+    height: 370px;
+    width: 100%;
+}

@@ -1,0 +1,9 @@
+/* CSS for user-home */
+.rev-slider-hidden {
+    display: none;
+}
+.rev-layer-title {
+    z-index: 5;
+    color: #fff;
+    font-weight: 900;
+}

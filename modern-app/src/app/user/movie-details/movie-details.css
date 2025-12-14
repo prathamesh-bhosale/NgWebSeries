@@ -1,0 +1,11 @@
+/* CSS for movie-details */
+.page-header-bg-details {
+    background: url(/assets/images/other/movie-detail-bg.jpg);
+}
+.play-video-link {
+    color: aliceblue;
+    cursor: pointer;
+}
+.video-hidden {
+    display: none;
+}

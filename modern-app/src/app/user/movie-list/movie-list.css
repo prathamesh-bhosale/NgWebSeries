@@ -1,0 +1,8 @@
+/* CSS for movie-list */
+.page-header-bg {
+    background: url(/assets/images/posters/movie-collection.jpg);
+}
+.play-video-link {
+    color: aliceblue;
+    cursor: pointer;
+}

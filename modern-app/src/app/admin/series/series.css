@@ -1,0 +1,10 @@
+/* CSS for series */
+.page-header-bg {
+    background: url(/assets/images/posters/movie-collection.jpg);
+}
+.table-img {
+    width: 100px;
+}
+.textarea-min-height {
+    min-height: 20px;
+}

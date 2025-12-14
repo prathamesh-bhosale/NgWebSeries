@@ -1,0 +1,120 @@
+<section class="page-header overlay-gradient page-header-bg">
+    <div class="container">
+        <div class="inner">
+            <h2 class="title">Movie Records</h2>
+        </div>
+    </div>
+</section>
+<section>
+
+    <main class="ptb100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4">
+                    <form>
+
+                        <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input type="text" class="form-control" name="name" id="name" [(ngModel)]="movie.name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="genre">Genres:</label>
+                            <select class="form-control" name="genre" id="genre" multiple size="3"
+                                [(ngModel)]="movie.categories">
+                                <option *ngFor="let _category of categoryList" [value]="_category.name">
+                                    {{_category.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="language">Language:</label>
+                            <select class="form-control" name="language" id="language" [(ngModel)]="movie.language">
+                                <option value="0"></option>
+                                <option *ngFor="let _language of languageList" [value]="_language.name">
+                                    {{_language.name}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="releaseddate">Released Date:</label>
+                            <input [(ngModel)]="movie.releaseddate" type="date" class="form-control" name="releaseddate"
+                                id="releaseddate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="imageurl">Poster Image</label>
+                            <input type="file" accept="image/*" (change)="selectedImage($event)" class="form-control"
+                                name="imageurl" id="imageurl">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="videourl">Video</label>
+                            <input type="file" accept="video/*" (change)="selectedVideo($event)" class="form-control"
+                                name="videourl" id="videourl">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="story">Story</label>
+                            <textarea rows="2" type="text" class="form-control textarea-min-height" name="story"
+                                id="story" [(ngModel)]="movie.story"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="checkbox pad-bottom-10">
+                                <input id="check1" type="checkbox" name="remember" value="1" [(ngModel)]="movie.forkid">
+                                <label for="check1">For Kids</label>
+                            </div>
+                        </div>
+
+                        <button (click)="submit()" type="button" class="btn btn-main btn-effect login-btn" id="btnadd">
+                            Add Movie
+                        </button>
+                        <h2> {{ movie | json}} </h2>
+
+                        <div id="err" class="text-danger">
+                            <img *ngIf="showloading" src="assets/images/loading.gif" class="loadingimg" alt="Loading" />
+                            {{message}}
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-md-7 offset-1">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Poster</th>
+                            <th>Movie</th>
+                            <th>Genres</th>
+                            <th>Language</th>
+                            <th>Views</th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr class="editicons" *ngFor="let _movie of movieList">
+                                <td><img class="table-img" [src]="getAbsolutePath(_movie.imageurl)" alt="Poster"></td>
+                                <td> {{_movie.name}} </td>
+                                <td> {{_movie.categories}} </td>
+                                <td> {{_movie.language}} </td>
+                                <td> {{_movie.views}} </td>
+                                <td>
+                                    <a (click)="delete(_movie)" class="btn" data-toggle="tooltip"
+                                        data-placement="bottom" title="Delete Movie"><i
+                                            class="large material-icons">delete</i></a>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="6" *ngIf="movieList == null || movieList.length == 0">
+                                    No record found
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</section>
